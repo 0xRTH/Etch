@@ -4,16 +4,40 @@ row.classList.add('row');
 const square = document.createElement('div');
 square.classList.add('square');
 
-for (i=0; i<16; i++) {
-  row.appendChild(square.cloneNode());
+const slider = document.querySelector('#myRange');
+const output = document.querySelector('.sliderOutput');
+output.innerHTML = slider.value;
+generateGrid(slider.value);
+slider.oninput = function() {
+	output.innerHTML = this.value;	
+	generateGrid(this.value);
 }
 
-for (i=0; i<16; i++) {
-  grid.appendChild(row.cloneNode(true));
+var squares
+
+function clearColor(e) {
+	squares.forEach((square) => {
+		square.classList.remove('colored')})
 }
 
-const squares = document.querySelectorAll('.square');
+
+function generateGrid (x) {
+	grid.innerHTML = "";
+	row.innerHTML= "";
+    for (i=0; i<x; i++) {
+ 		row.appendChild(square.cloneNode());
+    }
+
+    for (i=0; i<x; i++) {
+		grid.appendChild(row.cloneNode(true));
+    }
+	squares = document.querySelectorAll('.square');
+	squares.forEach((square) => {square.addEventListener('mouseover',function(e) {
+		this.classList.add('colored')
+		})
+	})
 
 
-squares.forEach((square) => {square.addEventListener('mouseover',function(e) { this.classList.add('colored')})
-})
+}
+
+
