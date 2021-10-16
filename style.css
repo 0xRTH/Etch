@@ -1,0 +1,29 @@
+* {
+  border-color: red;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.grid {
+  display: flex;
+  height: 30em;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  flex: 1;
+}
+
+.square {
+  flex: 1;
+  background-color: white;
+}
+
+.colored {
+  background-color: green;
+}
